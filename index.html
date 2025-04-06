@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Simple Expense Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"/>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Simple Expense Tracker</h2>
+        <button id="theme-toggle" class="btn btn-outline-secondary"><i class="bi bi-moon-fill"></i></button>
+    </div>
+
+    <div class="row">
+        <!-- Summary Cards -->
+        <div class="col-md-4 mb-3">
+            <div class="card dashboard-card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-wallet"></i> Total Balance</h5>
+                    <h2 id="balance" class="card-text">₹0.00</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card dashboard-card income-card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-graph-up-arrow"></i> Income</h5>
+                    <h2 id="income-amount" class="card-text money-plus">₹0.00</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card dashboard-card expense-card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-graph-down-arrow"></i> Expense</h5>
+                    <h2 id="expense-amount" class="card-text money-minus">₹0.00</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <!-- Transaction List -->
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0"><i class="bi bi-clock-history"></i> Recent Transactions</h5>
+                </div>
+                <div class="card-body">
+                    <ul id="transaction-list" class="list-group"></ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Transaction -->
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0"><i class="bi bi-plus-circle"></i> Add Transaction</h5>
+                </div>
+                <div class="card-body">
+                    <form id="transaction-form">
+                        <div class="mb-3">
+                            <label for="text" class="form-label">Description</label>
+                            <input type="text" class="form-control" id="text" placeholder="Enter description..." required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="amount" class="form-label">Amount</label>
+                            <div class="input-group">
+                                <span class="input-group-text">₹</span>
+                                <input type="number" class="form-control" id="amount" placeholder="Enter amount..." required>
+                            </div>
+                            <small class="form-text text-muted"><i class="bi bi-info-circle"></i> Use negative for expenses, positive for income</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="bi bi-plus-lg"></i> Add Transaction
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Monthly and Yearly Reports -->
+    <div class="row mt-5">
+        <div class="col-md-6 mb-4">
+            <h5>📅 Monthly Report</h5>
+            <canvas id="monthlyChart" height="200"></canvas>
+        </div>
+        <div class="col-md-6 mb-4">
+            <h5>📈 Yearly Report</h5>
+            <canvas id="yearlyChart" height="200"></canvas>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
+
